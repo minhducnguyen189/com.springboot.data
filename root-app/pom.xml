@@ -17,8 +17,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.springboot.database</groupId>
-            <artifactId>transaction-jpa-app</artifactId>
+            <groupId>com.springboot.data</groupId>
+            <artifactId>jpa-app</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

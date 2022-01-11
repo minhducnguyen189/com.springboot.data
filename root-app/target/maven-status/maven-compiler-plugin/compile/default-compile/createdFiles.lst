@@ -1,2 +1,2 @@
-com/springboot/data/root/app/controller/JpaCustomerManagementController.class
-com/springboot/data/root/app/RootApplication.class
+com\springboot\data\root\app\RootApplication.class
+com\springboot\data\root\app\controller\JpaCustomerManagementController.class

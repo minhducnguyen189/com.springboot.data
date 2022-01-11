@@ -1,7 +1,7 @@
 package com.springboot.data.root.app.controller;
 
-import com.springboot.database.transaction.jpa.app.model.request.CustomerRequest;
-import com.springboot.database.transaction.jpa.app.service.CustomerJpaService;
+import com.springboot.data.jpa.app.model.request.CustomerRequest;
+import com.springboot.data.jpa.app.service.CustomerJpaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

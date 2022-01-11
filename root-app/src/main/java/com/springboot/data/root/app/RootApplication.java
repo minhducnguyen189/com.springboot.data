@@ -1,6 +1,6 @@
 package com.springboot.data.root.app;
 
-import com.springboot.database.transaction.jpa.app.annotation.EnableJpaTransactionApp;
+import com.springboot.data.jpa.app.annotation.EnableJpaTransactionApp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
