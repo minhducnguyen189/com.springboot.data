@@ -6,12 +6,14 @@ import com.springboot.data.jpa.app.entity.OrderStatus;
 import com.springboot.data.jpa.app.model.request.CustomerRequest;
 import com.springboot.data.jpa.app.model.request.ItemRequest;
 import com.springboot.data.jpa.app.model.request.OrderRequest;
+import com.springboot.data.jpa.app.model.response.CustomerResponse;
 import com.springboot.data.jpa.app.repository.CustomerRepository;
 import com.springboot.data.jpa.app.entity.ItemEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -30,6 +32,14 @@ public class CustomerJpaService {
             customerEntity.setOrders(orderEntities);
         }
         return this.customerRepository.save(customerEntity).getId();
+    }
+
+    public CustomerResponse getCustomer(UUID customerId) {
+        Optional<CustomerEntity> customerEntity = this.customerRepository.findById(customerId);
+        if (customerEntity.isPresent()) {
+            return customerEntity.get().toCustomerResponse();
+        }
+        throw new RuntimeException("Customer Not Found!");
     }
 
     private List<OrderEntity> toOrderEntities(List<OrderRequest> orderRequests) {

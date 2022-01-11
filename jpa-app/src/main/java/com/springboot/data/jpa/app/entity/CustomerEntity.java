@@ -94,16 +94,15 @@ public class CustomerEntity {
         this.orders = orders;
     }
 
-    public CustomerResponse toCustomerResponse(CustomerEntity customerEntity) {
+    public CustomerResponse toCustomerResponse() {
         CustomerResponse customerResponse = new CustomerResponse();
-        customerResponse.setId(customerEntity.getId());
-        customerResponse.setAddress(customerEntity.getAddress());
-        customerResponse.setDob(customerEntity.getDob());
-        customerResponse.setEmail(customerResponse.getEmail());
-        customerResponse.setPhone(customerResponse.getPhone());
-        customerResponse.setFullName(customerEntity.getFullName());
-        customerResponse.setGender(customerEntity.getGender());
-        customerResponse.setOrders(customerEntity.getOrders().stream().map(o -> o.toOrderResponse(o)).collect(Collectors.toList()));
+        customerResponse.setId(this.getId());
+        customerResponse.setAddress(this.getAddress());
+        customerResponse.setDob(this.getDob());
+        customerResponse.setEmail(this.getEmail());
+        customerResponse.setPhone(this.getPhone());
+        customerResponse.setFullName(this.getFullName());
+        customerResponse.setGender(this.getGender());
         return customerResponse;
     }
 }

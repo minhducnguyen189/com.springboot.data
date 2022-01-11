@@ -19,6 +19,5 @@ public class OrderResponse {
     private LocalDateTime createdDate;
     private LocalDateTime lastUpdatedDate;
     private OrderStatus orderStatus;
-    private List<ItemResponse> items;
 
 }

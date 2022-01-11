@@ -21,6 +21,5 @@ public class CustomerResponse {
     private String phone;
     private Gender gender;
     private Date dob;
-    private List<OrderResponse> orders;
 
 }

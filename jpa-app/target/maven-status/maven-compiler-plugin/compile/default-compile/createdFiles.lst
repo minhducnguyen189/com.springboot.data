@@ -1,3 +1,4 @@
+com\springboot\data\jpa\app\application\CustomerJpaImpl.class
 com\springboot\data\jpa\app\service\CustomerJpaService.class
 com\springboot\data\jpa\app\config\ApplicationConfig.class
 com\springboot\data\jpa\app\model\request\ItemRequest.class
@@ -13,6 +14,7 @@ com\springboot\data\jpa\app\entity\Gender.class
 com\springboot\data\jpa\app\entity\OrderEntity.class
 com\springboot\data\jpa\app\service\ItemJpaService.class
 com\springboot\data\jpa\app\model\response\OrderResponse.class
+com\springboot\data\jpa\app\api\CustomerJpaApi.class
 com\springboot\data\jpa\app\entity\OrderStatus.class
 com\springboot\data\jpa\app\model\response\CustomerResponse.class
 com\springboot\data\jpa\app\annotation\EnableJpaTransactionApp.class

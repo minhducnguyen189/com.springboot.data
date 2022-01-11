@@ -102,7 +102,6 @@ public class OrderEntity {
         orderResponse.setOrderStatus(orderEntity.getOrderStatus());
         orderResponse.setCreatedDate(orderEntity.getCreatedDate());
         orderResponse.setLastUpdatedDate(orderEntity.getLastUpdatedDate());
-        orderResponse.setItems(orderEntity.getItems().stream().map(i -> i.toItemResponse(i)).collect(Collectors.toList()));
         return orderResponse;
     }
 
