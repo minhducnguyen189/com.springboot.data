@@ -9,4 +9,5 @@ public interface CustomerJpaApi {
 
     UUID createCustomer(CustomerRequest customerRequest);
     CustomerResponse getCustomer(UUID customerId);
+    void updateCustomer(UUID customerId, CustomerRequest customerRequest);
 }

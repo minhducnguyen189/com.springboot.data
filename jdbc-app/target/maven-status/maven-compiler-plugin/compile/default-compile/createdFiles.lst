@@ -1,3 +1,0 @@
-com\springboot\data\jdbc\app\annotation\EnableJdbcTransactionApp.class
-com\springboot\data\jdbc\app\service\CustomerJdbcService.class
-com\springboot\data\jdbc\app\config\ApplicationConfig.class

@@ -27,4 +27,11 @@ public class JpaCustomerManagementController {
         return new ResponseEntity<CustomerResponse>(this.customerJpaApi.getCustomer(customerId), HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, path = "/v1/customers/{customerId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> createCustomer(@PathVariable(name = "customerId") UUID customerId,
+                                                 @RequestBody CustomerRequest customerRequest) {
+        this.customerJpaApi.updateCustomer(customerId, customerRequest);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
 }

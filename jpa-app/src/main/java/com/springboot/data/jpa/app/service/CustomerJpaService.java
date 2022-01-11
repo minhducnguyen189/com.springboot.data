@@ -42,6 +42,14 @@ public class CustomerJpaService {
         throw new RuntimeException("Customer Not Found!");
     }
 
+    public void updateCustomer(UUID customerId, CustomerRequest customerRequest) {
+        Optional<CustomerEntity> customerEntity = this.customerRepository.findById(customerId);
+        if (customerEntity.isPresent()) {
+           CustomerEntity updatedCustomerEntity = this.toCustomerEntity(customerEntity.get(), customerRequest);
+            this.customerRepository.save(updatedCustomerEntity);
+        }
+    }
+
     private List<OrderEntity> toOrderEntities(List<OrderRequest> orderRequests) {
         return orderRequests.stream().map(o -> this.toOrderEntity(new OrderEntity(), o)).collect(Collectors.toList());
     }
