@@ -47,6 +47,7 @@ public class CustomerJpaService {
         if (customerEntity.isPresent()) {
            CustomerEntity updatedCustomerEntity = this.toCustomerEntity(customerEntity.get(), customerRequest);
             this.customerRepository.save(updatedCustomerEntity);
+            return;
         }
         throw new RuntimeException("Customer Not Found!");
     }
