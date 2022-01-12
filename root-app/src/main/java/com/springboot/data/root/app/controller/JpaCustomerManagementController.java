@@ -34,4 +34,10 @@ public class JpaCustomerManagementController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, path = "/v1/customers/{customerId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> deleteCustomer(@PathVariable(name = "customerId") UUID customerId) {
+        this.customerJpaApi.deleteCustomer(customerId);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
 }
