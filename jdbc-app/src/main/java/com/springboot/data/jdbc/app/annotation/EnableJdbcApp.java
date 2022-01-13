@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Import(ApplicationConfig.class)
-public @interface EnableJdbcTransactionApp {
+public @interface EnableJdbcApp {
 
     @AliasFor(annotation = Import.class, attribute = "value")
     Class<?>[] value() default {ApplicationConfig.class};
