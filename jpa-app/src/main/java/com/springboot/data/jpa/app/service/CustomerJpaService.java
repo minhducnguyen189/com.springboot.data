@@ -52,6 +52,10 @@ public class CustomerJpaService {
         throw new RuntimeException("Customer Not Found!");
     }
 
+    public void deleteCustomer(UUID customerId) {
+        this.customerRepository.deleteById(customerId);
+    }
+
     private List<OrderEntity> toOrderEntities(List<OrderRequest> orderRequests) {
         return orderRequests.stream().map(o -> this.toOrderEntity(new OrderEntity(), o)).collect(Collectors.toList());
     }

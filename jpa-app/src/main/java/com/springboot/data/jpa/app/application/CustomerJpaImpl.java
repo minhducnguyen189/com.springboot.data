@@ -29,4 +29,9 @@ public class CustomerJpaImpl implements CustomerJpaApi {
     public void updateCustomer(UUID customerId, CustomerRequest customerRequest) {
         this.customerJpaService.updateCustomer(customerId, customerRequest);
     }
+
+    @Override
+    public void deleteCustomer(UUID customerId) {
+        this.customerJpaService.deleteCustomer(customerId);
+    }
 }
