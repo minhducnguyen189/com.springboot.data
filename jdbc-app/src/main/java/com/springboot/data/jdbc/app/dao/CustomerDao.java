@@ -26,18 +26,38 @@ public class CustomerDao {
 
 
     public UUID createCustomer(CustomerRequest customerRequest) {
+//        String sqlCustomerQuery =
+//                         " INSERT INTO customers(                          "
+//                 +       " id,                                            " /*1*/
+//                 +       " full_name,                                     " /*2*/
+//                 +       " email,                                         " /*3*/
+//                 +       " address,                                       " /*4*/
+//                 +       " phone,                                         " /*5*/
+//                 +       " gender,                                        " /*6*/
+//                 +       " dob)                                           " /*7*/
+//                 +       " VALUES(                                        "
+//                 +       " :id,                                           " /*1*/
+//                 +       " :full_name,                                    " /*2*/
+//                 +       " :email,                                        " /*3*/
+//                 +       " :address,                                      " /*4*/
+//                 +       " :phone,                                        " /*5*/
+//                 +       " :gender,                                       " /*6*/
+//                 +       " :dob)                                          " /*7*/
+//                        ;
+
         String sqlCustomerQuery =
-                "INSERT INTO customers(id, full_name ,email ,address ,phone ,gender ,dob, orders) " +
-                        "VALUE(:id ,:full_name ,:email ,:address ,:phone ,:gender ,:dob ,:orders)";
+       "INSERT INTO customers(id, address, dob, email, full_name, gender, phone) VALUES (':id', ':address', ':dob', ':email', ':fullName', ':gender', ':phone')"
+                ;
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
         UUID uuid = this.getRandomUUID();
         mapSqlParameterSource.addValue("id", uuid);
-        mapSqlParameterSource.addValue("full_name", customerRequest.getFullName());
+        mapSqlParameterSource.addValue("fullName", customerRequest.getFullName());
         mapSqlParameterSource.addValue("address", customerRequest.getAddress());
         mapSqlParameterSource.addValue("phone", customerRequest.getPhone());
+        mapSqlParameterSource.addValue("email", customerRequest.getEmail());
         mapSqlParameterSource.addValue("gender", customerRequest.getGender());
         mapSqlParameterSource.addValue("dob", customerRequest.getDob());
-        this.jdbcTemplate.execute(sqlCustomerQuery);
+        this.jdbcTemplate.update(sqlCustomerQuery, mapSqlParameterSource);
         return uuid;
     }
 
@@ -50,7 +70,7 @@ public class CustomerDao {
                  +       "last_updated_date,                                 " /*3*/
                  +       "order_name,                                        " /*4*/
                  +       "order_status)                                      " /*5*/
-                 +       "VALUE(                                             "
+                 +       "VALUES(                                            "
                  +       ":id,                                               " /*1*/
                  +       ":created_date,                                     " /*2*/
                  +       ":last_updated_date,                                " /*3*/
@@ -80,7 +100,7 @@ public class CustomerDao {
                         +       "item_name,                                         " /*2*/
                         +       "price,                                             " /*3*/
                         +       "quantity,                                          " /*4*/
-                        +       "VALUE(                                             "
+                        +       "VALUES(                                             "
                         +       ":id,                                               " /*1*/
                         +       ":item_name,                                        " /*2*/
                         +       ":price,                                            " /*3*/
@@ -91,6 +111,7 @@ public class CustomerDao {
         for (ItemRequest itemRequest: itemRequests) {
             MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
             mapSqlParameterSource.addValue("id", uuid);
+            mapSqlParameterSource.addValue("item_name", itemRequest.getItemName());
             mapSqlParameterSource.addValue("item_name", itemRequest.getItemName());
             mapSqlParameterSource.addValue("price", itemRequest.getPrice());
             mapSqlParameterSource.addValue("quantity", itemRequest.getQuantity());

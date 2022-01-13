@@ -7,7 +7,7 @@ spring:
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 10
-      minimumIdle: 5
+      minimumIdle: 1
       idleTimeout: 30000
       maxLifetime: 180000
   jpa:
@@ -15,7 +15,7 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
-#    open-in-view: false
+    open-in-view: true
     properties:
       hibernate:
         generate_statistics: true
