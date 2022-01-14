@@ -18,15 +18,15 @@ public class CustomerJdbcService {
 
     public UUID createCustomer(CustomerRequest customerRequest) {
         UUID customerId = this.customerDao.createCustomer(customerRequest);
-        List<OrderRequest> orders = customerRequest.getOrders();
-        if (orders != null && !orders.isEmpty()) {
-            this.customerDao.createOrders(customerRequest.getOrders());
-            for (OrderRequest order: orders) {
-                if (order.getItems() != null && !order.getItems().isEmpty()) {
-                    this.customerDao.createItems(order.getItems());
-                }
-            }
-        }
+//        List<OrderRequest> orders = customerRequest.getOrders();
+//        if (orders != null && !orders.isEmpty()) {
+//            this.customerDao.createOrders(customerRequest.getOrders());
+//            for (OrderRequest order: orders) {
+//                if (order.getItems() != null && !order.getItems().isEmpty()) {
+//                    this.customerDao.createItems(order.getItems());
+//                }
+//            }
+//        }
         return customerId;
     }
 

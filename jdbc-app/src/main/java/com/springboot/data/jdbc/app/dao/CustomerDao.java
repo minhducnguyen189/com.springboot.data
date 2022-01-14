@@ -26,38 +26,18 @@ public class CustomerDao {
 
 
     public UUID createCustomer(CustomerRequest customerRequest) {
-//        String sqlCustomerQuery =
-//                         " INSERT INTO customers(                          "
-//                 +       " id,                                            " /*1*/
-//                 +       " full_name,                                     " /*2*/
-//                 +       " email,                                         " /*3*/
-//                 +       " address,                                       " /*4*/
-//                 +       " phone,                                         " /*5*/
-//                 +       " gender,                                        " /*6*/
-//                 +       " dob)                                           " /*7*/
-//                 +       " VALUES(                                        "
-//                 +       " :id,                                           " /*1*/
-//                 +       " :full_name,                                    " /*2*/
-//                 +       " :email,                                        " /*3*/
-//                 +       " :address,                                      " /*4*/
-//                 +       " :phone,                                        " /*5*/
-//                 +       " :gender,                                       " /*6*/
-//                 +       " :dob)                                          " /*7*/
-//                        ;
-
         String sqlCustomerQuery =
-       "INSERT INTO customers(id, address, dob, email, full_name, gender, phone) VALUES (':id', ':address', ':dob', ':email', ':fullName', ':gender', ':phone')"
-                ;
+       "INSERT INTO customers(id, address, dob, email, full_name, gender, phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
         UUID uuid = this.getRandomUUID();
-        mapSqlParameterSource.addValue("id", uuid);
-        mapSqlParameterSource.addValue("fullName", customerRequest.getFullName());
-        mapSqlParameterSource.addValue("address", customerRequest.getAddress());
-        mapSqlParameterSource.addValue("phone", customerRequest.getPhone());
-        mapSqlParameterSource.addValue("email", customerRequest.getEmail());
-        mapSqlParameterSource.addValue("gender", customerRequest.getGender());
-        mapSqlParameterSource.addValue("dob", customerRequest.getDob());
-        this.jdbcTemplate.update(sqlCustomerQuery, mapSqlParameterSource);
+        this.jdbcTemplate.update(sqlCustomerQuery,
+                uuid.toString(),
+                customerRequest.getAddress(),
+                customerRequest.getDob(),
+                customerRequest.getEmail(),
+                customerRequest.getFullName(),
+                customerRequest.getGender().toString(),
+                customerRequest.getPhone());
         return uuid;
     }
 
