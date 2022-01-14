@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -18,15 +19,15 @@ public class CustomerJdbcService {
 
     public UUID createCustomer(CustomerRequest customerRequest) {
         UUID customerId = this.customerDao.createCustomer(customerRequest);
-//        List<OrderRequest> orders = customerRequest.getOrders();
-//        if (orders != null && !orders.isEmpty()) {
-//            this.customerDao.createOrders(customerRequest.getOrders());
-//            for (OrderRequest order: orders) {
-//                if (order.getItems() != null && !order.getItems().isEmpty()) {
-//                    this.customerDao.createItems(order.getItems());
-//                }
-//            }
-//        }
+        List<OrderRequest> orders = customerRequest.getOrders();
+        if (orders != null && !orders.isEmpty()) {
+            Map<UUID, OrderRequest> orderRequestMap = this.customerDao.createOrders(customerId, customerRequest.getOrders());
+            for (Map.Entry<UUID, OrderRequest> map : orderRequestMap.entrySet()) {
+                if (map.getValue().getItems() != null && !map.getValue().getItems().isEmpty()) {
+                    this.customerDao.createItems(map.getKey(), map.getValue().getItems());
+                }
+            }
+        }
         return customerId;
     }
 
