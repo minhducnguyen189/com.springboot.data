@@ -14,7 +14,7 @@ import java.util.UUID;
 @RestController
 public class JpaCustomerManagementController {
 
-    @Autowired
+    @Autowired(required = false)
     private CustomerJpaApi customerJpaApi;
 
     @RequestMapping(method = RequestMethod.POST, path = "/v1/jpa/customers", produces = MediaType.TEXT_PLAIN_VALUE)

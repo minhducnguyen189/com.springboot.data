@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class JdbcCustomerManagementController {
 
-    @Autowired
+    @Autowired(required = false)
     private CustomerJDBCApi customerJDBCApi;
 
     @RequestMapping(method = RequestMethod.POST, path = "/v1/jdbc/customers", produces = MediaType.TEXT_PLAIN_VALUE)
