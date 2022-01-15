@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableJdbcApp
-@EnableJpaApp
+//@EnableJpaApp
 @SpringBootApplication
 public class RootApplication {
 
