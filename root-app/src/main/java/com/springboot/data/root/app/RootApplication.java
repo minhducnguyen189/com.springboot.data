@@ -5,8 +5,8 @@ import com.springboot.data.jpa.app.annotation.EnableJpaApp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@EnableJdbcApp
-//@EnableJpaApp
+//@EnableJdbcApp
+@EnableJpaApp
 @SpringBootApplication
 public class RootApplication {
 
