@@ -30,7 +30,16 @@ public class CustomerDao {
 
     public UUID createCustomer(CustomerRequest customerRequest) {
         String sqlCustomerQuery =
-       "INSERT INTO customers(id, address, dob, email, full_name, gender, phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                           "INSERT INTO customers(                          "
+                +          "id,                                             "   /*1*/
+                +          "address,                                        "   /*2*/
+                +          "dob,                                            "   /*3*/
+                +          "email,                                          "   /*4*/
+                +          "full_name,                                      "   /*5*/
+                +          "gender,                                         "   /*6*/
+                +          "phone)                                          "   /*7*/
+                +          "VALUES (?, ?, ?, ?, ?, ?, ?)                    "
+                ;
         UUID uuid = this.getRandomUUID();
         this.jdbcTemplate.update(sqlCustomerQuery,
                 uuid.toString(),
