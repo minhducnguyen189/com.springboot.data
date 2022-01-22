@@ -36,3 +36,6 @@ logging:
     org:
       hibernate:
         stat: DEBUG
+      springframework:
+        jdbc:
+          core: DEBUG
