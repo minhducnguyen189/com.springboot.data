@@ -107,13 +107,4 @@ public class OrderEntity {
         this.items = items;
     }
 
-    public OrderResponse toOrderResponse(OrderEntity orderEntity) {
-        OrderResponse orderResponse = new OrderResponse();
-        orderResponse.setId(orderEntity.getId());
-        orderResponse.setOrderStatus(orderEntity.getOrderStatus());
-        orderResponse.setCreatedDate(orderEntity.getCreatedDate());
-        orderResponse.setLastUpdatedDate(orderEntity.getLastUpdatedDate());
-        return orderResponse;
-    }
-
 }

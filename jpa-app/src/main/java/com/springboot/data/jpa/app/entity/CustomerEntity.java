@@ -102,15 +102,4 @@ public class CustomerEntity {
         this.orders = orders;
     }
 
-    public CustomerResponse toCustomerResponse() {
-        CustomerResponse customerResponse = new CustomerResponse();
-        customerResponse.setId(this.getId());
-        customerResponse.setAddress(this.getAddress());
-        customerResponse.setDob(this.getDob());
-        customerResponse.setEmail(this.getEmail());
-        customerResponse.setPhone(this.getPhone());
-        customerResponse.setFullName(this.getFullName());
-        customerResponse.setGender(this.getGender());
-        return customerResponse;
-    }
 }

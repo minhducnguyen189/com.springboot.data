@@ -71,12 +71,4 @@ public class ItemEntity {
         this.order = order;
     }
 
-    public ItemResponse toItemResponse(ItemEntity itemEntity) {
-        ItemResponse itemResponse = new ItemResponse();
-        itemResponse.setId(itemEntity.getId());
-        itemResponse.setItemName(itemEntity.getItemName());
-        itemResponse.setPrice(itemEntity.getPrice());
-        itemResponse.setQuantity(itemEntity.getQuantity());
-        return itemResponse;
-    }
 }

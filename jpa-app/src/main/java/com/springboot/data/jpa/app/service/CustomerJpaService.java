@@ -37,7 +37,7 @@ public class CustomerJpaService {
     public CustomerResponse getCustomer(UUID customerId) {
         Optional<CustomerEntity> customerEntity = this.customerRepository.findById(customerId);
         if (customerEntity.isPresent()) {
-            return customerEntity.get().toCustomerResponse();
+            return this.toCustomerResponse(customerEntity.get());
         }
         throw new RuntimeException("Customer Not Found!");
     }
@@ -90,6 +90,19 @@ public class CustomerJpaService {
         customerEntity.setFullName(customerRequest.getFullName());
         customerEntity.setPhone(customerRequest.getPhone());
         return customerEntity;
+    }
+
+
+    private CustomerResponse toCustomerResponse(CustomerEntity customerEntity) {
+        CustomerResponse customerResponse = new CustomerResponse();
+        customerResponse.setId(customerEntity.getId());
+        customerResponse.setAddress(customerEntity.getAddress());
+        customerResponse.setDob(customerEntity.getDob());
+        customerResponse.setEmail(customerEntity.getEmail());
+        customerResponse.setPhone(customerEntity.getPhone());
+        customerResponse.setFullName(customerEntity.getFullName());
+        customerResponse.setGender(customerEntity.getGender());
+        return customerResponse;
     }
 
 }
