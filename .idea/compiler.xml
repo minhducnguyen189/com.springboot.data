@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="jdbc-app" />
         <module name="root-app" />
+        <module name="jpa-multi-datasource" />
         <module name="jpa-app" />
       </profile>
     </annotationProcessing>

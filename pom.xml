@@ -39,6 +39,7 @@
         <module>jdbc-app</module>
         <module>jpa-app</module>
         <module>root-app</module>
+        <module>jpa-multi-datasource</module>
     </modules>
 
 </project>

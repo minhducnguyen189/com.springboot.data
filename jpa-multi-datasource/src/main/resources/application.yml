@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/primaryDb?useSSL=false  #This is the primary DB connection url
+    username: root
+    password: password
+  second-datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/secondaryDb?useSSL=false  #This is the secondary DB connection url
+    username: root
+    password: password
+  jpa:
+    hibernate.ddl-auto: update
+    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: true
+    show-sql: true
