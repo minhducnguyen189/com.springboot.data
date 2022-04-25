@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/customer?useSSL=false
+    username: root
+    password: password
+  jpa:
+    hibernate.ddl-auto: none
+    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: false
+    show-sql: false
+  flyway:
+#    locations: classpath:db/migration
+    enabled: true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/customer?useSSL=false
+    schemas: customer
+    user: root
+    password: password

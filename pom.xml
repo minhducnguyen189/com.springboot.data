@@ -40,6 +40,7 @@
         <module>jpa-app</module>
         <module>root-app</module>
         <module>jpa-multi-datasource</module>
+        <module>flyway-app</module>
     </modules>
 
 </project>
