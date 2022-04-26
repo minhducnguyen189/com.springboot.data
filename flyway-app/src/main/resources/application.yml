@@ -7,13 +7,13 @@ spring:
   jpa:
     hibernate.ddl-auto: none
     hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
-    generate-ddl: false
+    generate-ddl: true
     show-sql: false
   flyway:
-#    locations: classpath:db/migration
     enabled: true
+    baselineOnMigrate: true
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/customer?useSSL=false
-    schemas: customer
-    user: root
-    password: password
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    locations: classpath:db/migration
