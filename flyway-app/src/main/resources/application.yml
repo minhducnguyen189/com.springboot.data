@@ -10,9 +10,9 @@ spring:
     generate-ddl: true
     show-sql: false
   flyway:
-    enabled: true
-    baselineOnMigrate: true
-    driverClassName: com.mysql.cj.jdbc.Driver
+#    enabled: true
+#    baselineOnMigrate: true
+    driverClassName: ${spring.datasource.driverClassName}
     url: ${spring.datasource.url}
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
