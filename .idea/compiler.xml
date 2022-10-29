@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jdbc-app" />
+        <module name="hibernate-envers-app" />
         <module name="root-app" />
         <module name="flyway-app" />
         <module name="jpa-multi-datasource" />

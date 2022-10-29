@@ -41,6 +41,7 @@
         <module>root-app</module>
         <module>jpa-multi-datasource</module>
         <module>flyway-app</module>
+        <module>hibernate-envers-app</module>
     </modules>
 
 </project>

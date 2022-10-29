@@ -1,0 +1,41 @@
+
+# config datasource for Jpa and Jdbc
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sample?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: password
+
+    # config dbcp pool for jdbc
+    maxWait: 10000
+    maxActive: -1
+    maxIdle: 20
+    minIdle: 10
+    initialSize: 10
+
+    #config hikari pool for jpa
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 20
+      minimumIdle: 15
+      idleTimeout: 30000
+      maxLifetime: 180000
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        generate_statistics: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        stat: DEBUG
+      springframework:
+        jdbc:
+          core: DEBUG
