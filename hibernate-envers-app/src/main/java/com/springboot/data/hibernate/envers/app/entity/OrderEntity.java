@@ -6,6 +6,7 @@ import org.hibernate.envers.NotAudited;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -28,6 +29,10 @@ public class OrderEntity {
 
     @Enumerated(value = EnumType.STRING)
     private OrderStatus orderStatus;
+
+    private OffsetDateTime createdDateSystem;
+
+    private OffsetDateTime updatedDate;
 
     @NotAudited
     @ManyToOne(fetch = FetchType.LAZY)
@@ -97,6 +102,26 @@ public class OrderEntity {
 
     public void setItems(List<ItemEntity> items) {
         this.items = items;
+    }
+
+    public OffsetDateTime getCreatedDateSystem() {
+        return createdDateSystem;
+    }
+
+    public OffsetDateTime getUpdatedDate() {
+        return updatedDate;
+    }
+
+    @PrePersist
+    private void onCreate() {
+        OffsetDateTime now = OffsetDateTime.now();
+        this.createdDateSystem = now;
+        this.updatedDate = now;
+    }
+
+    @PreUpdate
+    private void onUpdate() {
+        this.updatedDate = OffsetDateTime.now();
     }
 
 }

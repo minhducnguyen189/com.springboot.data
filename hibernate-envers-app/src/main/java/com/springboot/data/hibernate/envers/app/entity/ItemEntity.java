@@ -5,6 +5,7 @@ import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
 import javax.persistence.*;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Audited
@@ -22,6 +23,10 @@ public class ItemEntity {
     private Long quantity;
 
     private Float price;
+
+    private OffsetDateTime createdDate;
+
+    private OffsetDateTime updatedDate;
 
     @NotAudited
     @ManyToOne(fetch = FetchType.LAZY)
@@ -66,6 +71,26 @@ public class ItemEntity {
 
     public void setOrder(OrderEntity order) {
         this.order = order;
+    }
+
+    public OffsetDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public OffsetDateTime getUpdatedDate() {
+        return updatedDate;
+    }
+
+    @PrePersist
+    private void onCreate() {
+        OffsetDateTime now = OffsetDateTime.now();
+        this.createdDate = now;
+        this.updatedDate = now;
+    }
+
+    @PreUpdate
+    private void onUpdate() {
+        this.updatedDate = OffsetDateTime.now();
     }
 
 }

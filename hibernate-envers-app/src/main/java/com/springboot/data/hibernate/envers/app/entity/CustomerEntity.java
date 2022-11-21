@@ -5,6 +5,7 @@ import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
 import javax.persistence.*;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +28,10 @@ public class CustomerEntity {
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private Date dob;
+
+    private OffsetDateTime createdDate;
+
+    private OffsetDateTime updatedDate;
 
     @NotAudited
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -94,6 +99,27 @@ public class CustomerEntity {
 
     public void setOrders(List<OrderEntity> orders) {
         this.orders = orders;
+    }
+
+    public OffsetDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public OffsetDateTime getUpdatedDate() {
+        return updatedDate;
+    }
+
+
+    @PrePersist
+    private void onCreate() {
+        OffsetDateTime now = OffsetDateTime.now();
+        this.createdDate = now;
+        this.updatedDate = now;
+    }
+
+    @PreUpdate
+    private void onUpdate() {
+        this.updatedDate = OffsetDateTime.now();
     }
 
 }
