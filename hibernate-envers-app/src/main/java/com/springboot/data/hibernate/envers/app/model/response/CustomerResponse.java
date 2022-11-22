@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -20,5 +21,7 @@ public class CustomerResponse {
     private String phone;
     private Gender gender;
     private Date dob;
+    private OffsetDateTime createdDate;
+    private OffsetDateTime updatedDate;
 
 }
