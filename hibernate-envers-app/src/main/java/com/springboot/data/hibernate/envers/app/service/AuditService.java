@@ -15,13 +15,16 @@ import java.util.stream.Collectors;
 @Service
 public class AuditService {
 
+    private static final boolean SELECT_ENTITIES_ONLY_VALUE_TRUE = true;
+    private static final boolean SELECT_DELETED_ENTITIES_VALUE_TRUE = false;
+
     @Autowired
     private EntityManager entityManager;
 
     public List<CustomerResponse> getAuditCustomer(UUID customerId) {
         List<CustomerEntity> auditEntities = AuditReaderFactory.get(entityManager)
                 .createQuery()
-                .forRevisionsOfEntity(CustomerEntity.class, true,false)
+                .forRevisionsOfEntity(CustomerEntity.class, SELECT_ENTITIES_ONLY_VALUE_TRUE,SELECT_DELETED_ENTITIES_VALUE_TRUE)
                 .add(AuditEntity.property("id").eq(customerId))
                 .addOrder(AuditEntity.property("createdDate").desc())
                 .addOrder(AuditEntity.property("updatedDate").desc())
