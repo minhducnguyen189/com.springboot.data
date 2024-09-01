@@ -42,6 +42,7 @@
         <module>jpa-multi-datasource</module>
         <module>flyway-app</module>
         <module>hibernate-envers-app</module>
+        <module>spring-jdbc-app</module>
     </modules>
 
 </project>

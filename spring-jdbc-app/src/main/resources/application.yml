@@ -1,0 +1,25 @@
+
+# config datasource for Jpa and Jdbc
+spring:
+  datasource:
+    driverClassName: "org.postgresql.Driver"
+    url: "jdbc:postgresql://localhost:5432/sample?useUnicode=true&characterEncoding=UTF-8"
+    username: "root"
+    password: "password"
+
+    #config hikari pool for jpa
+    hikari:
+      connection-timeout: "30000"
+      maximum-pool-size: "20"
+      minimumIdle: "15"
+      idleTimeout: "30000"
+      maxLifetime: "180000"
+
+logging:
+  level:
+    org:
+      hibernate:
+        stat: DEBUG
+      springframework:
+        jdbc:
+          core: DEBUG
